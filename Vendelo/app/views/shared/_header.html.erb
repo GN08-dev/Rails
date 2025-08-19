@@ -1,0 +1,9 @@
+<%= link_to  products_path do %>
+  <h1>Vendelo</h1>
+<%end%>
+<button><%= link_to t(".add"), new_product_path %></button>
+<button><%= link_to t(".categories"), categories_path %></button>
+<%# flash.inspect  sirve para ver si hay algun elemento en alert o notice %>
+<%# para ver las notice o alerts cuando algo no se realizo correctamente %>
+<span style="color: red;"><%= alert %></span>
+<span style="color: green;" ><%= notice %></span>

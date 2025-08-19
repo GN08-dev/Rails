@@ -1,12 +1,14 @@
 <!DOCTYPE html>
+<%# pagina principal que se rendiriza al inicio %>
+<%# estructura del html que van a compartir todas las pantallas %>
 <html>
   <head>
-    <title><%= content_for(:title) || "Nombre Proyecto" %></title>
+    <title><%= content_for(:title) || "Vendelo" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+    <%= csrf_meta_tags %> <%# etiquetas de segiridad %>
+    <%= csp_meta_tag %> <%# etiquetas de seguridad %>
 
     <%= yield :head %>
 
@@ -23,6 +25,10 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= DateTime.now %>
+    <%# rederizar el header crearo en shared %>
+    <%= render "shared/header" %>
+    <%# es un parcial %>
+    <%= yield %> <%# etiqueta dinamica que rediriza todas las paginas %>
   </body>
 </html>

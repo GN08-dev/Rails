@@ -1,0 +1,34 @@
+<%# refactorizar codigo se usa ne las vistas de edit y new %>
+<%= form_with model: @product do |form| %>
+  <%# manejo de errores en formulario %>
+  <% @product.errors.full_messages.each do |error|%>
+    <%# #el div es para saltos de linea %>
+    <span style="color: red;"><%= error %></span>
+  <%end%>
+  <%# activerecord %>
+  <div style="padding: 15px;">
+    <div >
+      <%= form.label :title %>
+      <%= form.text_field :title %>
+    </div>
+    <div style="padding-top: 10px;">
+      <%= form.label :descripcion%>
+      <%= form.text_area :descripcion %>
+    </div>
+    <div style="padding-top: 10px;">
+      <%= form.label :price%>
+      <%= form.number_field :price %>
+    </div>
+    <div style="padding-top: 10px;">
+      <%# selector de categorias %>
+      <%# para ordenar la lista se debera colocar en la query un .order(name: :asc) %>
+      <%= form.collection_select :category_id, Category.all, :id, :name %>
+      <%# <%= form.collection_select :category_id, Category.all.order(name: :asc), :id, :name %> 
+    </div>
+    <div style="padding-top: 10px;">
+      <%= form.label :photo%>
+      <%= form.file_field :photo %>
+    </div>
+    <%= form.submit%>
+  </div>
+<%end%>

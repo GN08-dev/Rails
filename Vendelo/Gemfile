@@ -54,6 +54,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem "htmlbeautifier"
 end
 
 group :test do
@@ -61,3 +62,9 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "ruby-lsp", "~> 0.26.1", group: :development
+
+gem "pg_search", "~> 2.3"
+
+gem "pagy", "~> 9.4"

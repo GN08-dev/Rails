@@ -1,0 +1,58 @@
+es:
+  #para las vistas de formulario
+  activerecord:
+    models: #se coloca el tipo de modelo que usaremos
+      product: "Producto" #en este caso productos
+    attributes: # decimos que atributos son y
+      product: # seleccionamos el modelo y colocamos los atributos
+        title: "Título"
+        descripcion: "Descripción"
+        price: "Precio"
+        photo: "Foto"
+  # common se usara para las confirmaciones de flash
+  common:
+    confirm: "¿Estas seguro?"
+    back: "regresar atras"
+  shared:
+    header:
+      add: "Agregar"
+      categories: "Categorias"
+  # este se usara para los titulos de las pagians
+  products:
+    edit:
+      title: "Editar producto"
+    show:
+      title: "Mirar producto"
+    new:
+      title: "Añadir producto"
+    index:
+      title: "Productos"
+      all: "Todos"
+      min_price: "Precio minimo"
+      max_price: "Precio maximo"
+      query_text: "Quer quieres buscar?"
+    create:
+      created: "Tu producto se agrego correctamente"
+    update:
+      updated: "Tu producto se a actualizado"
+    destroy:
+      destroyed: "Tu producto se ha eliminado correctamente"
+  categories:
+    #los parciales de categorias
+    category:
+      edit: "editar"
+      delete: "Eliminar"
+    index:
+      title: "categorias"
+      new: "nueva categoria"
+    edit:
+      title: "Editar categorias"
+    new:
+      title: "Nueva categoria"
+  #errores
+  errors:
+    messages:
+      blank: "no puede estar vacío"
+      taken: "ya está en uso"
+      too_short: "es demasiado corto (mínimo %{count} caracteres)"
+      too_long: "es demasiado largo (máximo %{count} caracteres)"

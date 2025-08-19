@@ -113,6 +113,7 @@ GEM
       raabro (~> 1.4)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    htmlbeautifier (1.4.3)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     importmap-rails (2.2.2)
@@ -175,12 +176,16 @@ GEM
     nokogiri (1.18.9-x86_64-linux-gnu)
       racc (~> 1.4)
     ostruct (0.6.3)
+    pagy (9.4.0)
     parallel (1.27.0)
     parser (3.3.9.0)
       ast (~> 2.4.1)
       racc
     pg (1.6.1-x64-mingw-ucrt)
     pg (1.6.1-x86_64-linux)
+    pg_search (2.3.7)
+      activerecord (>= 6.1)
+      activesupport (>= 6.1)
     pp (0.6.2)
       prettyprint
     prettyprint (0.2.0)
@@ -236,6 +241,8 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.3.0)
+    rbs (3.9.4)
+      logger
     rdoc (6.14.2)
       erb
       psych (>= 4.0.0)
@@ -271,6 +278,10 @@ GEM
       rubocop (>= 1.72)
       rubocop-performance (>= 1.24)
       rubocop-rails (>= 2.30)
+    ruby-lsp (0.26.1)
+      language_server-protocol (~> 3.17.0)
+      prism (>= 1.2, < 2.0)
+      rbs (>= 3, < 5)
     ruby-progressbar (1.13.0)
     rubyzip (3.0.1)
     securerandom (0.4.1)
@@ -345,14 +356,18 @@ DEPENDENCIES
   brakeman
   capybara
   debug
+  htmlbeautifier
   importmap-rails
   jbuilder
   kamal
+  pagy (~> 9.4)
   pg (~> 1.1)
+  pg_search (~> 2.3)
   propshaft
   puma (>= 5.0)
   rails (~> 8.0.2, >= 8.0.2.1)
   rubocop-rails-omakase
+  ruby-lsp (~> 0.26.1)
   selenium-webdriver
   solid_cable
   solid_cache

@@ -1,0 +1,7 @@
+<%# se agrego una logica de turbo para salir del frame, se coloco depspues de la clase   %>
+<%= link_to  product_path(product.id) ,class: "product" , "data-turbo-frame": "_top" do %>
+  <%# el = dentro de el codigo de ruby sirve para imprimir el mensaje en consola y si no lo tiene no imprime nada %>
+  <h2> <%= product.title %> </h2>
+  <%= image_tag product.photo, width: 200 if product.photo.attached? %>
+  <p>$<%= product.price%></p>
+<%end%>

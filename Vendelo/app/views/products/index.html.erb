@@ -1,0 +1,59 @@
+<%= turbo_frame_tag "home" do %>
+
+<h2> <%= t(".title") %></h2>
+<%# Filtrado %>
+<%= form_with url: products_path, method: :get do |form| %>
+    <%# filtro de texto con pg_search %>
+    <%= form.text_field :query_text, placeholder: t(".query_text"),
+        onchange:"this.form.requestSubmit()",
+        value:params[:query_text]
+    %>
+    <%# busqueda con filtros maximo y minimo %>
+    <%= form.number_field :min_price, placeholder: t(".min_price"), 
+        onchange:"this.form.requestSubmit()",
+        value: params[:min_price] # guardamos el valor de lacaja para poder colocar dos valores entre minimo y maximo
+    %>
+    <%= form.number_field :max_price, placeholder: t(".max_price"),
+        onchange:"this.form.requestSubmit()",
+        value: params[:max_price]
+    %>
+    <%= 
+        #form.select :order_by, options_for_select([
+        #        ["Recientes", "newest"],
+        #        ["Mas caros", "expensive"],
+        #        ["Mas baratos", "cheaper"] 
+        #    ],
+        #    params[:order_by]
+        #), {} , # aqui se guarda los values por default
+        #{onchange:"this.form.requestSubmit()"} # aqui van las clases o las acciones que hara 
+    %>
+
+    <%=
+        form.select :order_by, 
+        options_for_select(
+            # ,mandamos a obtener la key de clarada y la pasamos como traslate 
+            # el map lo pasamos para mapear y el || es el bucle 
+            Product::ORDER_BY.keys.map{ |order| [t(".#{order}"), order] },
+            params[:order_by]
+        ), 
+            {},
+            {onchange:"this.form.requestSubmit()"}
+    %>
+<% end %>
+<%# peticiones a archivos partials  %>
+    <%= link_to t(".all"), products_path %> 
+
+    <%= render partial: "category", collection: @categories %>
+    
+    <%# renderizadp de productos  en un tag para la paginacion, se cambio el div por el turbo%>
+    
+    <%= turbo_frame_tag "products-#{@pagy.page}", class: "products" do %>
+        <%= render partial: "product", collection: @products%>
+        <%# añadir la siguiente pagina respetando la anterior pagina  %>
+        <%= turbo_frame_tag "products-#{@pagy.next}", class: "products", src:  
+            pagy_url_for(@pagy, @pagy.next),
+            loading: :lazy if @pagy.next
+        %>
+    
+    <% end %>
+<% end %>

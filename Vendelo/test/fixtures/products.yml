@@ -3,159 +3,186 @@ xbox:
   descripcion: le falla el puerto hdmi
   price: 300
   category: videogames
+  user: prueba
 
 ps4:
   title: PS4 Fat
   descripcion: PS4 en buen estado
   price: 150
   category: videogames
+  user: prueba
 
 switch:
   title: Nintendo Switch
   descripcion: Le falla el lector de tarjeta SD
   price: 195
   category: videogames
+  user: prueba
 
 nintendo64:
   title: Nintendo 64 en buen estado
   descripcion: Con su caja, solo tiene algún pequeño arañazo
   price: 190
   category: videogames
+  user: prueba
 
 megadrive:
   title: Sega Megadrive
   descripcion: Funciona perfectamente, solo consola
   price: 90
   category: videogames
+  user: prueba
 
 driver2:
   title: Driver 2 para ps1
   descripcion: Como nuevo en su caja y con instrucciones
   price: 25
   category: videogames
+  user: prueba
 
 ps5:
   title: PS5 nueva sin lector
   descripcion: A estrenar, usada solo dos veces.
   price: 650
   category: videogames
+  user: prueba
 
 gameboy:
   title: Game Boy Color
   descripcion: Con su caja. Color morada transparente.
   price: 150
   category: videogames
+  user: prueba
 
 air:
   title: Macbook Air
   descripcion: Le falla la batería
   price: 250
   category: computers
+  user: prueba2
 
 imac:
   title: iMac 27" 2015
   descripcion: i5 con 8gb de ram y SSD
   price: 90
   category: computers
+  user: prueba2
 
 ryzen:
   title: Ryzen 5950x
   descripcion: Sin estrenar precintado como nuevo
   price: 590
   category: computers
+  user: prueba2
 
 nvidia:
   title: Nvidia 3090ti
   descripcion: Solo usada 3 meses la vendo porque no la uso
   price: 1500
   category: computers
+  user: prueba2
 
 ram:
   title: 16GB Ram DDR4 3200mhz
   descripcion: Funciona perfectamente
   price: 95
   category: computers
+  user: prueba2
 
 renault:
   title: Renault Clio 2009
   descripcion: 85000km, 95cv
   price: 4500
   category: cars
+  user: prueba2
 
 seat:
   title: Seat Panda clásico
   descripcion: Tan solo 90000km, 75cv. Del año 1980
   price: 5500
   category: cars
+  user: prueba2
 
 michael:
   title: Vinilo Michael Jackson Thriller
   descripcion: Como nuevo a estrenar
   price: 45
   category: music
+  user: prueba2
 
 queen:
   title: Vinilo Queen
   descripcion: Ligeras marcas de uso de los años 80
   price: 35
   category: music
+  user: prueba2
 
 tv:
   title: Televisión LG 48 pulgadas
   descripcion: Viene con smart TV funciona perfectamente
   price: 350
   category: electronic
+  user: prueba2
 
 kindle:
   title: Lector de libros Kindle 2010
   descripcion: Tiene marcas de uso pero funciona bien
   price: 35
   category: electronic
+  user: prueba2
 
 ipod:
   title: iPod touch
   descripcion: Como nuevo a estrenar con su caja
   price: 175
   category: electronic
+  user: prueba2
 
 harry:
   title: Colección entera de Harry Potter
   descripcion: Todos los libros de la saga. Bien cuidados!
   price: 65
   category: books
+  user: prueba2
 
 hobbit:
   title: El hobbit
   descripcion: Libro en buen estado
   price: 15
   category: books
+  user: prueba2
 
 iphone:
   title: iPhone 13
   descripcion: Funciona correctamente.
   price: 400
   category: mobile
+  user: prueba2
 
 pixel:
   title: Google Pixel 4
   descripcion: Le falla la batería
   price: 100
   category: mobile
+  user: prueba2
 
 surf:
   title: Tabla de surf
   descripcion: Usada dos veces. Como nueva.
   price: 125
   category: sports
+  user: prueba2
 
 tennis:
   title: Raqueta de tenis profesional
   descripcion: Fabricada en fibra de carbono. Solo un par de arañazos
   price: 135
   category: sports
+  user: prueba2
 
 skate:
   title: Skateboard
   descripcion: Como nuevo con las ruedas recién cambiadas
   price: 75
   category: sports
+  user: prueba2

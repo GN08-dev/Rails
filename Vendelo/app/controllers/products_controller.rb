@@ -1,9 +1,13 @@
 class ProductsController < ApplicationController
+  # evitar el redireccionamiento de bucle de validacion de inicio de session de appplication controller del metodo protect_pages
+  skip_before_action :protect_pages, only: [ :index, :show ]
   def index
     @categories = Category.all.order(name: :asc).load_async
       # uso de pagy para las paginas
+      # se cambio el params por default por uno permitido
       params[:page] = params[:page].presence || 1
-      @pagy, @products = pagy_countless(FindProducts.new.call(params).load_async, items: 12)
+      @pagy, @products = pagy_countless(FindProducts.new.call(product_params_index).load_async, items: 12)
+    # @pagy, @products = pagy_countless(FindProducts.new.call(params).load_async, items: 12)
   end
 
   def show
@@ -18,9 +22,15 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(producto_params)
+    # forma base de creacion
+    # @product = Product.new(producto_params)
     # pp @product
 
+    # forma de creacion con asignacion de usuario
+    # @product = Current.user.products.new(producto_params)
+    # forma recomendada en directamente en el modelo pasarle un valor por default mejor
+
+    @product = Product.new(producto_params)
 
     if @product.save
       # despues del redirect se agrego la noticia que se agrego correctamente el producto
@@ -35,10 +45,14 @@ class ProductsController < ApplicationController
   def edit
     # consulta para encontrar el id
     # @product = Product.find(params[:id])
-    product
+    # consulta policies para saber si es el usuario de que va a editar
+    # authorize!(product) forma 1
+    authorize! product
+    # product
   end
 
   def update
+    authorize! product
     # aqui tambien se puede usar el metodo product
     @product =  Product.find(params[:id]) # consulta a buscar por id
 
@@ -51,6 +65,7 @@ class ProductsController < ApplicationController
 
   # eliminar producto
   def destroy
+    authorize! product
     # se cambio por la funcion de product para hacer mas limpio el codigo
     # @product = Product.find(params[:id])
     # @product.destroy
@@ -66,8 +81,18 @@ class ProductsController < ApplicationController
   end
 
   def product
-    @product = Product.find(params[:id]) # devuelve la busqueda
+    @product ||= Product.find(params[:id]) # devuelve la busqueda
   end
+
+  def product_params_index
+    params.permit(:category_id, :min_price, :max_price, :query_text, :order_by, :page, :favorites, :user_id)
+  end
+
+
+
+
+
+
   # es el index original antes de la refactorizacion de codigo en el index
   def index_pruebas
     # filtrado por categorias

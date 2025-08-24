@@ -1,0 +1,17 @@
+<%if Current.user && Current.user.admin? %>
+<%# le pasamos lo que es add una data para que todo lo que muetre el add lo pase al turbo frame de data %>
+<%= link_to t(".add"), new_product_path, class: "mx-2 text-black font-bold hover:text-blue-400", data: { turbo_frame: :modal } %>
+  <%= link_to t(".categories"), categories_path ,class: "mx-2 text-black font-bold hover:text-blue-400"%>
+<% end %>
+<% unless Current.user %>
+  <%= link_to t(".login"), new_session_path ,class: "mx-2 text-black font-bold hover:text-blue-400"%>
+  <%= link_to t(".created"), new_user_path,class: "mx-2 text-black font-bold hover:text-blue-400" %>
+<% end %>
+<% if Current.user %>
+  <%# se le paso el id por session path porque solicita un parametro %>
+  <%= link_to t(".logout"), session_path(Current.user.id), data: {
+  turbo_method: :delete,
+  #turbo_confirm: t("common.confirm")
+},class: "mx-2 text-black font-bold hover:text-blue-400" %>
+  <%= link_to t(".favorites"), favorites_path ,class: "mx-2 text-black font-bold hover:text-blue-400"%>
+<% end %>

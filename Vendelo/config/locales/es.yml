@@ -13,16 +13,38 @@ es:
   common:
     confirm: "¿Estas seguro?"
     back: "regresar atras"
+    not_logged_in: "Tines que logearte o crearte una cuenta"
+    not_authorized: "No tienes autorizacion"
+    not_found: "No encontrado"
   shared:
     header:
+      title: "Vendelo"
+    items:
       add: "Agregar"
       categories: "Categorias"
+      logout: "cerrar sesion"
+      login: "iniciar session"
+      created: "Crear cuenta"
+  # AUTHETICACION VISTA
+  authentication:
+    users:
+      create:
+        created: "Tu cuenta se ha creado con exito"
+    sessions:
+      create:
+        created: "Bienvenido"
+        failed: "Login iinvalido"
+      destroy:
+        destroyed: "Has cerrado la session"
   # este se usara para los titulos de las pagians
   products:
     edit:
       title: "Editar producto"
     show:
       title: "Mirar producto"
+      edit: "Editar producto"
+      delete: "Eliminar producto"
+      view_more_products: "Ver mas productos de %{username}"
     new:
       title: "Añadir producto"
     index:
@@ -31,6 +53,9 @@ es:
       min_price: "Precio minimo"
       max_price: "Precio maximo"
       query_text: "Quer quieres buscar?"
+      newest: "Recientes"
+      expensive: "Mas caros"
+      cheaper: "Mas baratos"
     create:
       created: "Tu producto se agrego correctamente"
     update:

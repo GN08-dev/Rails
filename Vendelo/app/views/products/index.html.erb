@@ -1,19 +1,18 @@
 <%= turbo_frame_tag "home" do %>
-
-<h2> <%= t(".title") %></h2>
 <%# Filtrado %>
 <%= form_with url: products_path, method: :get do |form| %>
     <%# filtro de texto con pg_search %>
     <%= form.text_field :query_text, placeholder: t(".query_text"),
         onchange:"this.form.requestSubmit()",
-        value:params[:query_text]
+        value:params[:query_text], class: "w-full my-2 p-1 rounded-2xl bg-white border-gray-200"
     %>
-    <%# busqueda con filtros maximo y minimo %>
-    <%= form.number_field :min_price, placeholder: t(".min_price"), 
+    <div class="flex">
+        <%# busqueda con filtros maximo y minimo %>
+    <%= form.number_field :min_price, placeholder: t(".min_price"), class: "w-1/3 rounded-2xl border-gray-200   bg-white pt-1 pb-1 pl-1",
         onchange:"this.form.requestSubmit()",
         value: params[:min_price] # guardamos el valor de lacaja para poder colocar dos valores entre minimo y maximo
     %>
-    <%= form.number_field :max_price, placeholder: t(".max_price"),
+    <%= form.number_field :max_price, placeholder: t(".max_price"), class: "w-1/3 rounded-2xl border-gray-200   bg-white pt-1 pb-1 pl-1 mx-2",
         onchange:"this.form.requestSubmit()",
         value: params[:max_price]
     %>
@@ -37,23 +36,30 @@
             params[:order_by]
         ), 
             {},
-            {onchange:"this.form.requestSubmit()"}
+            {onchange:"this.form.requestSubmit()", class:"w-1/3 rounded-2xl text-gray-400 border-gray-200   bg-white pt-1 pb-1 pl-1"}
     %>
+    </div>
 <% end %>
 <%# peticiones a archivos partials  %>
-    <%= link_to t(".all"), products_path %> 
+    <div class="flex l gap-2 my-4 flex-wrap">
+        <%= link_to t(".all"), products_path, class: "bg-white text-gray-600 px-4 p-y2 rounded-2xl drop-shadow-sm hover:bg-gray-300" %> 
 
     <%= render partial: "category", collection: @categories %>
+    </div>
     
     <%# renderizadp de productos  en un tag para la paginacion, se cambio el div por el turbo%>
-    
-    <%= turbo_frame_tag "products-#{@pagy.page}", class: "products" do %>
-        <%= render partial: "product", collection: @products%>
-        <%# añadir la siguiente pagina respetando la anterior pagina  %>
-        <%= turbo_frame_tag "products-#{@pagy.next}", class: "products", src:  
-            pagy_url_for(@pagy, @pagy.next),
-            loading: :lazy if @pagy.next
-        %>
-    
+    <%# declaracion de turbo_frame_tag para asignaerle el nombre de :products en forma de bloque %>
+    <%= turbo_frame_tag :products, class: "flex flex-col m-2" do %> <%# renderizadp de ñps productos es el padre %>
+    <%#  cuerpo de los prodcutos %>
+        <%= turbo_frame_tag "products-#{@pagy.page}", class: "products flex flex-col w-full sm:flex-row sm:flex-wrap sm:gap-x-2" do %>
+            <%= render partial: "product", collection: @products%>
+            <%# añadir la siguiente pagina respetando la anterior pagina  %>
+            <%#  se debera colocar la misma clases que se usar en el turbo framg de pagy para que se muestre los mismosestilos en lasiguiente pagina %>
+            <%= turbo_frame_tag "products-#{@pagy.next}", class: "products flex flex-col w-full sm:flex-row sm:flex-wrap  sm:gap-x-2", src:  
+                pagy_url_for(@pagy, @pagy.next),
+                loading: :lazy if @pagy.next
+            %>
+        
+        <% end %>
     <% end %>
 <% end %>

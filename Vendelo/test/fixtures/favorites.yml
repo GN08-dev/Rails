@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+prueba_ps4:
+  user: prueba
+  product: ps4
+
+prueba2_switch:
+  user: prueba2
+  product: switch

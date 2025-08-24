@@ -1,9 +1,26 @@
-<%= link_to  products_path do %>
-  <h1>Vendelo</h1>
-<%end%>
-<button><%= link_to t(".add"), new_product_path %></button>
-<button><%= link_to t(".categories"), categories_path %></button>
-<%# flash.inspect  sirve para ver si hay algun elemento en alert o notice %>
-<%# para ver las notice o alerts cuando algo no se realizo correctamente %>
-<span style="color: red;"><%= alert %></span>
-<span style="color: green;" ><%= notice %></span>
+<%# se coloca lo que es el llamado al controlador en donde esta englobado el boton y el contenido en tonces se hara en el padre %>
+<%# ya que el boton y el div del menu estan englobados aqui mismo entonces apuntamos con data-controller sea igual al nombre del controlador llamado menu %>
+<div class=" flex bg-white justify-between items-center px-2" data-controller="menu" >
+  <%= link_to  products_path do %>
+    <h1 class="text-blue-700 text-4xl pt-2 hover:text-blue-300 animate-bounce"><%= t(".title") %></h1>
+  <%end%>
+  <%# boton de sidebar, metodo ejecutado cuando se ele declick con action y se llama al controlador#metodo %>
+  <button class="sm:hidden" data-action="click->menu#toggle" > <%= image_tag "icons/menu.svg", width: 35, height: 35  %></button>
+  
+  <%# <%= Current.user.inspect %>
+  <%# por defecto esta en hidden pero si es mas grande que sm se muestra los textos %>
+  <div class="hidden sm:block">
+    <%= render partial: "shared/items" %>
+  </div>
+
+  <%# menu mobil %>
+ <%# para el funcionamiento de este menu se usara stimulus js para su funcionamiento %>
+ <%# se crea loque es un archio llamado menu_controller para el manejo de los eventos  %>
+ <%# dentro de la siguiente carpeta javascript/controller %>
+ <%# para que funcione el menu y se muetre se debera borrar una clase en concreto para ello llamamos con target de ka siguiente forma %>
+ <%# data-controlador-target="nombre_a_especificar_para_llamado" %>
+ <div class="sm:hidden absolute bg-white top-0 right-0 shadow z-10 h-full flex flex-col min-w-[35%] overflow-y-scroll ease-in-out duration-200 p-5 translate-x-full" data-menu-target="items">
+  <button class="mb-2" data-action="click->menu#toggle" > <%= image_tag "icons/close.svg", width: 35, height: 35  %></button>
+  <%= render partial: "shared/items" %>
+ </div>
+</div>

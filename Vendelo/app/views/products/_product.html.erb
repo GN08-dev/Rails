@@ -1,7 +1,12 @@
 <%# se agrego una logica de turbo para salir del frame, se coloco depspues de la clase   %>
-<%= link_to  product_path(product.id) ,class: "product" , "data-turbo-frame": "_top" do %>
+<%# se usara sm para lo que son modelos en tablets ya que se usa para las medias querys se cambia el sm:w-1/3 porque se debera mejor calcular los margenes %>
+<%# el lg se usa para media query que funcionara para escritorio %>
+<%= link_to  product_path(product.id) ,class: "product bg-white mb-2 rounded sm:w-[calc(33.33333%_-_.5rem)] lg:w-[calc(25%_-_.5rem)]" , "data-turbo-frame": "_top" do %>
   <%# el = dentro de el codigo de ruby sirve para imprimir el mensaje en consola y si no lo tiene no imprime nada %>
+  <%= image_tag product.photo.attached? ? product.photo : "placeholder.jpg", class: "w-full h-80 object-cover"  %>
+  <div>
+  <p class="font-bold text-xl">$<%= product.price%></p>
   <h2> <%= product.title %> </h2>
-  <%= image_tag product.photo, width: 200 if product.photo.attached? %>
-  <p>$<%= product.price%></p>
+  <p class="text-gray-500 text-sm mt-2"><%= product.descripcion %></p>
+  </div>
 <%end%>

@@ -24,11 +24,16 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= DateTime.now %>
+  <body class="bg-gray-200">
+    <%# <%= DateTime.now %> 
     <%# rederizar el header crearo en shared %>
     <%= render "shared/header" %>
-    <%# es un parcial %>
-    <%= yield %> <%# etiqueta dinamica que rediriza todas las paginas %>
+    <%= render "shared/flash" %>
+    <%# es un parcial , se encerro en un div para centrar la informacion de la vista%>
+    <div class="lg:container lg:mx-auto">
+      <%= yield %> <%# etiqueta dinamica que rediriza todas las paginas %>
+    </div>
+    <%# modal para la vista de add %>
+    <%= turbo_frame_tag "modal" %>
   </body>
 </html>

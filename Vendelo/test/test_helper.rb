@@ -10,6 +10,9 @@ module ActiveSupport
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all
 
-    # Add more helper methods to be used by all tests here...
+    # Add more helper methods to be used by all tests here... # modo de inicio de sesion
+    def login
+      post sessions_path, params: { login: "prueba@vendol.com", password: "testme" }
+    end
   end
 end

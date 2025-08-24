@@ -1,5 +1,7 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: %i[ edit update destroy ]
+  # callback
+  before_action :authorize! # se aplica a todos los metodos para saber si es administrador
 
   # GET /categories
   def index

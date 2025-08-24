@@ -24,14 +24,14 @@ module NombreProyecto
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
-    #declaracion de idiomas para la aplicacion 
-    #avilitar lenguajes 
-    config.i18n.available_locales = [:en, :es]
+    # declaracion de idiomas para la aplicacion
+    # avilitar lenguajes
+    config.i18n.available_locales = [ :en, :es ]
 
     # lenguaje por default
     config.i18n.default_locale = :es
 
-    #allow multiquery 
+    # allow multiquery
     config.active_record.async_query_executor = :global_thread_pool
   end
 end

@@ -2,6 +2,7 @@ require "test_helper"
 
 class CategoriesControllerTest < ActionDispatch::IntegrationTest
   setup do
+    login
     # se ásp mejor clothes porque productos aun tiene productos y por ello no se peude eliminar una categoria
     @category = categories(:clothes)
   end
@@ -24,7 +25,7 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to categories_url
   end
 
-  
+
 
   test "should get edit" do
     get edit_category_url(@category)

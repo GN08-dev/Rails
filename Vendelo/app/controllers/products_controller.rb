@@ -57,6 +57,8 @@ class ProductsController < ApplicationController
     @product =  Product.find(params[:id]) # consulta a buscar por id
 
     if @product.update(producto_params) # le pasamos los parametros que deceamos actualizar
+      # notify_all_users # metodo para usar para notificar actualizaciones al cliente por medio de un canal de websocket
+      product.broadcast # llamamos el metodo definido en el modelo
       redirect_to products_path,  notice: t(".updated")
     else
       render :edit, status: :unprocessable_entity
@@ -132,5 +134,15 @@ class ProductsController < ApplicationController
       params[:page] = params[:page].presence || 1
       @pagy, @products = pagy_countless(@products, items: 12)
       pp(@pagy)
+  end
+
+  def notify_all_users
+    # broadcast lo que hace es enviar un mensaje en concreto a esa room en especifico que esten conectados lo users
+    ActionCable.server.broadcast(
+      "product_#{@product.id}",
+      {
+        action: "update"
+      }
+    )
   end
 end

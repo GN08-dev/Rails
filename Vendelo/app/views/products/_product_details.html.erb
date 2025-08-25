@@ -1,0 +1,9 @@
+<%# la condicional de la imagen es para saber si tiene una imagen o no %>
+<div id="<%= dom_id(product)%>">
+  <%= image_tag product.photo, width: 200 if product.photo.attached? %>
+  
+  <h2 class="title" ><%= product.title %></h2>
+  <h3>El costo del producto es: <%= product.price %></h3>
+  <p>Descripción:</p>
+  <p><%= product.descripcion %></p>
+</div>

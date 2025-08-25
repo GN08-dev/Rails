@@ -72,3 +72,7 @@ gem "pagy", "~> 9.4"
 gem "tailwindcss-ruby", "~> 4.1"
 
 gem "tailwindcss-rails", "~> 4.3"
+
+gem "view_component", require: "view_component/engine"
+
+gem "view_component-contrib", "~> 0.2.5"

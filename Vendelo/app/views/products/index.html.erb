@@ -46,6 +46,8 @@
 
     <%= render partial: "category", collection: @categories %>
     </div>
+    <%# renderizado de componentes %>
+    <%= render(CategoryComponent.new) %>
     
     <%# renderizadp de productos  en un tag para la paginacion, se cambio el div por el turbo%>
     <%# declaracion de turbo_frame_tag para asignaerle el nombre de :products en forma de bloque %>

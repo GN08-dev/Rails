@@ -38,6 +38,14 @@ class Product < ApplicationRecord
     user_id == Current.user&.id
   end
   ################################################################################
+  # modelo de producto para el uso de turbo_stream_from
+  ################################################################################
+  def broadcast
+    broadcast_replace_to self, partial: "products/product_details", locals: { product: self }
+    # lo que realiza turbo es remplazar lo que tenemos para ello se debe usar el broadcast_replace_to
+    # en este pasamo el self que seria algo como product_id
+  end
+  ################################################################################
   # SE HIZO UN CONCERN PARA OPTIMIZAR EL CODIGO LLAMADO FAVORITETABLE
   ################################################################################
   # relacion de favoritos de uno a muchos y si se borra el usuario que se borre todo

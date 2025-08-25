@@ -1,10 +1,5 @@
-<h2> <%= t(".title") %> </h2>
-<h2 class="title" ><%= @product.title %></h2>
-<%# la condicional de la imagen es para saber si tiene una imagen o no %>
-<%= image_tag @product.photo, width: 200 if @product.photo.attached? %>
-<h3>El costo del producto es: <%= @product.price %></h3>
-<p>Descripción:</p>
-<p><%= @product.descripcion %></p>
+
+<%= render partial:  "products/product_details", locals: {product: @product} %>
 <% if Current.user.present? && @product.user_id == Current.user.id %>
   <strong>  <%= link_to t(".edit"), edit_product_path(@product) %>  </strong>
   <%= link_to t(".delete"), product_path(@product), data:{
@@ -20,4 +15,9 @@
 <%# el controlado de favorites ya que se le enviara un html renderizando lo que es el partial de turbo %>
 <%# para ello ocupamos lo que es una variable local para identificarse tambien %>
 <%= render partial: "favorite", locals: {product: @product} %>
-<div data-controller="websocket-product"></div>
+<%# websocket para enviar los datos al controllador y actualizar el lado cliente %>
+<%# <div data-controller="websocket-product" data-websocket-product-productid="<%= @product.id "></div> %>
+
+<%# creacion de canal con una room  con turbo %>
+
+<%= turbo_stream_from @product %>
